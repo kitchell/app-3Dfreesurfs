@@ -27,6 +27,6 @@ labels = [2, 41, 4, 43, 10, 11, 12, 13, 14, 15, 16, 17, 18, 49, 50, 51,
           2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035]
 for e in labels:
     labelname = lut.loc[lut['number'] == str(e)].iloc[0]['name']
-    print labelname    
+    print(labelname)    
     surfname = labelname + '.' + filetype
     niftiMask2Surface(e, aparcaseg, 'surfaces/'+surfname, 10, filetype)
