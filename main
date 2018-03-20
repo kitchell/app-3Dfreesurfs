@@ -14,7 +14,7 @@ time singularity exec -e docker://brainlife/freesurfer:6.0.0 bash -c "echo $FREE
 
 echo "making surfaces"
 
-singularity exec -e docker://brainlife/pythonvtk ./main.py
+singularity exec -e docker://brainlife/docker-pythonvtk ./main.py
 
 count=$(ls surfaces/* | wc -l)
 
