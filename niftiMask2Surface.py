@@ -23,7 +23,7 @@ def niftiMask2Surface(label, img_path, surf_name, smooth_iter=10, filetype="vtk"
     reader = vtk.vtkNIFTIImageReader()
     reader.SetFileName(img_path)
     reader.Update()
-    
+
     # do marching cubes to create a surface
     surface = vtk.vtkDiscreteMarchingCubes()
     surface.SetInputConnection(reader.GetOutputPort())
@@ -54,7 +54,7 @@ def niftiMask2Surface(label, img_path, surf_name, smooth_iter=10, filetype="vtk"
     cleaned = vtk.vtkCleanPolyData()
     cleaned.SetInputConnection(untransformFilter.GetOutputPort())
     cleaned.Update()
-    
+
     # doesn't work, but may need in future
     # close_holes = vtk.vtkFillHolesFilter()
     # close_holes.SetInputConnection(smoother.GetOutputPort())
@@ -66,14 +66,14 @@ def niftiMask2Surface(label, img_path, surf_name, smooth_iter=10, filetype="vtk"
       writer.SetFileTypeToASCII()
       writer.SetFileName(surf_name)
       writer.Write()
-      
+    
     if filetype == "ply":
       writer = vtk.vtkPLYWriter()
       writer.SetInputConnection(cleaned.GetOutputPort())
       writer.SetFileTypeToASCII()
       writer.SetFileName(surf_name)
       writer.Write()
-      
+    
     if filetype == "vtk":
       writer = vtk.vtkPolyDataWriter()
       #writer = vtk.vtkDataSetWriter()
