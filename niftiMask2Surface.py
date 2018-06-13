@@ -18,13 +18,12 @@ niftiMask2Surface(img_path, "arc_smooth.vtk", 15, "vtk")
 
 import vtk
 
-
 def niftiMask2Surface(label, img_path, surf_name, smooth_iter=10, filetype="vtk"):
     # import the binary nifti image
     reader = vtk.vtkNIFTIImageReader()
     reader.SetFileName(img_path)
     reader.Update()
-
+    
     # do marching cubes to create a surface
     surface = vtk.vtkDiscreteMarchingCubes()
     surface.SetInputConnection(reader.GetOutputPort())
@@ -43,10 +42,19 @@ def niftiMask2Surface(label, img_path, surf_name, smooth_iter=10, filetype="vtk"
     connectivityFilter.SetInputConnection(smoother.GetOutputPort())
     connectivityFilter.SetExtractionModeToLargestRegion()
     connectivityFilter.Update()
-
+    
+    # Center the output data at 0 0 0
+    untransform = vtk.vtkTransform()
+    untransform.SetMatrix(reader.GetQFormMatrix())
+    untransformFilter=vtk.vtkTransformPolyDataFilter()
+    untransformFilter.SetTransform(untransform)
+    untransformFilter.SetInputConnection(connectivityFilter.GetOutputPort())
+    untransformFilter.Update()
+    
     cleaned = vtk.vtkCleanPolyData()
-    cleaned.SetInputConnection(connectivityFilter.GetOutputPort())
+    cleaned.SetInputConnection(untransformFilter.GetOutputPort())
     cleaned.Update()
+    
     # doesn't work, but may need in future
     # close_holes = vtk.vtkFillHolesFilter()
     # close_holes.SetInputConnection(smoother.GetOutputPort())
