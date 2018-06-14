@@ -38,13 +38,13 @@ for e in labels:
     surfacesList.append({
         'name': info['name'],
         'color': [
-            float(info.R) / 255,
-            float(info.G) / 255,
-            float(info.B) / 255
+            float(info['R']) / 255,
+            float(info['G']) / 255,
+            float(info['B']) / 255
         ],
         'filename': surfname,
-        'left': bool(info.left),
-        'right': bool(info.right)
+        'left': bool(info['left']),
+        'right': bool(info['right'])
     })
     niftiMask2Surface(e, aparcaseg, filename, 10, filetype)
 
