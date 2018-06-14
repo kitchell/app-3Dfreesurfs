@@ -44,7 +44,8 @@ for e in labels:
         ],
         'filename': surfname,
         'left': bool(info['left']),
-        'right': bool(info['right'])
+        'right': bool(info['right']),
+        'type': filetype
     })
     niftiMask2Surface(e, aparcaseg, filename, 10, filetype)
 
