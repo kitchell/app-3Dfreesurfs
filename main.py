@@ -36,7 +36,7 @@ for e in labels:
     print(info['name'])
     
     surfacesList.append({
-        'name': info.name,
+        'name': info['name'],
         'color': [
             float(info.R) / 255,
             float(info.G) / 255,
