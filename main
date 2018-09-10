@@ -18,7 +18,7 @@ singularity exec -e docker://brainlife/docker-pythonvtk ./main.py
 
 count=$(ls surfaces/* | wc -l)
 
-if [ "$count" == 87 ] 
+if [ "$count" == 88 ] 
 then
 	echo 0 > finished
 else
