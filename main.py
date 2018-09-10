@@ -8,9 +8,11 @@ import pandas as pd
 with open('config.json') as config_json:
     config = json.load(config_json)
 
-pwd = os.getcwd()
-if not os.stat(pwd + "/surfaces"):
-    os.mkdir(pwd + "/surfaces")
+#pwd = os.getcwd()
+if not os.path.exists("surfaces"):
+   os.makedirs("surfaces")
+#if not os.stat(pwd + "/surfaces"):
+#    os.mkdir(pwd + "/surfaces")
 
 #os.chdir(pwd + "/surfaces")
 
