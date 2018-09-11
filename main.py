@@ -44,7 +44,7 @@ for e in labels:
             float(info['G']) / 255,
             float(info['B']) / 255
         ],
-        'filename': surfname,
+        'path': surfname,
         'left': bool(info['left']),
         'right': bool(info['right']),
         'filetype': filetype
