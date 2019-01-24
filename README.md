@@ -1,5 +1,5 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
-[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.1-blue.svg)](https://doi.org/10.25663/bl.app.1)
+[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.98-blue.svg)](https://doi.org/10.25663/bl.app.98)
 
 # app-3Dfreesurfs
 This application will create a 3D surface for 87 freesurfer labels from the aparc+aseg.mgz file.
