@@ -13,8 +13,9 @@ echo "converting aparc+aseg file"
 time singularity exec -e docker://brainlife/freesurfer:6.0.0 bash -c "echo $FREESURFER_LICENSE > /usr/local/freesurfer/license.txt && ./convertfiles.sh"
 
 echo "making surfaces"
-
-singularity exec -e docker://brainlife/docker-pythonvtk ./main.py
+export SINGULARITYENV_PYTHONNOUSERSITE=true
+time singularity exec -e docker://brainlife/pythonvtk:1.1 ./main.py
+#singularity exec -e docker://brainlife/docker-pythonvtk ./main.py
 
 count=$(ls surfaces/* | wc -l)
 
