@@ -2,6 +2,45 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.98-blue.svg)](https://doi.org/10.25663/bl.app.98)
 
 # app-3Dfreesurfs
+
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Creates 3D surface meshes for the FreeSurfer aparc+aseg labels (cortical and subcortical regions) with VTK marching cubes, in vtk, ply or stl format.**
+
+Converts mri/aparc+aseg.mgz to NIfTI with FreeSurfer mri_label2vol, then builds a smoothed mesh for each of a fixed list of subcortical and Desikan-Killiany cortical labels with VTK, naming and colouring them from the FreeSurfer colour lookup table. Use it to visualise a FreeSurfer segmentation in 3D. The job checks for a fixed number of output files and fails if any are missing.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/freesurfer` |
+| 📤 **Outputs** | `neuro/3Dsurfaces` |
+| 🐳 **Container** | `brainlife/freesurfer:6.0.1` |
+| ⚙️ **Resources** | 8 CPUs · 0.5 h walltime |
+| 🔑 **Requires** | `FREESURFER_LICENSE` |
+| 🔗 **Run it** | [doi.org/10.25663/bl.app.98](https://doi.org/10.25663/bl.app.98) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `freesurfer` | `neuro/freesurfer` | yes | FreeSurfer subject directory. Must contain mri/aparc+aseg.mgz. |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `surfaces` | `neuro/3Dsurfaces` | One surface mesh per FreeSurfer label, with colour and name information. |
+
+<details>
+<summary><b>⚙️ Parameters</b> (1)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `filetype` | enum | `vtk` | choose output filetype Options: `vtk`, `ply`, `stl`. |
+
+</details>
+
+<!-- brainlife-app:end -->
+
 This application will create a 3D surface for 87 freesurfer labels from the aparc+aseg.mgz file.
 
 ### Author
